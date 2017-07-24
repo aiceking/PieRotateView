@@ -1,3 +1,4 @@
 # PieRotateView
-android自定义View，带旋转动画的饼状图，区块点击事件接口，滑动到某一区块事件接口＜/br＞＜/br＞
+android鑷畾涔塚iew锛屽甫鏃嬭浆鍔ㄧ敾鐨勯ゼ鐘跺浘锛屽尯鍧楃偣鍑讳簨浠舵帴鍙ｏ紝婊戝姩鍒版煇涓�鍖哄潡浜嬩欢鎺ュ彛  
+
 ![Image text](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/GIF.gif)
