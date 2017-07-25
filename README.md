@@ -1,6 +1,8 @@
 # PieRotateView
 android自定义View，带旋转动画的饼状图 
 
+原理实现：http://blog.csdn.net/qq_20082063/article/details/76037393  
+
 区块点击事件接口（旋转到该区块，且字体变大靠下位置显示） 
 
 旋转到某一区块事件接口（旋转到某区块字体变大靠下位置显示） 
