@@ -43,10 +43,10 @@ public class Test1Activity extends AppCompatActivity {
         list_names.add("4号机组");
         list_names.add("5号机组");
         final List<Float> list_numbers=new ArrayList<>();
-        list_numbers.add(100f);
         list_numbers.add(200f);
         list_numbers.add(300f);
-        list_numbers.add(400f);
+        list_numbers.add(10f);
+        list_numbers.add(10f);
         list_numbers.add(400f);
         final List<Integer> list_colors=new ArrayList<>();
         list_colors.add(Color.parseColor("#FF7F00"));
@@ -57,7 +57,7 @@ public class Test1Activity extends AppCompatActivity {
         pieRotate.setList_colors(list_colors);
         pieRotate.setList_names(list_names);
         pieRotate.setList_numbers(list_numbers);
-        pieRotate.setMax_number(1400f);
+        pieRotate.setMax_number(920f);
         pieRotate.setTextColor(Color.WHITE);
         pieRotate.setIsShowTextonMove(IsShowTextonMove);
         pieRotate.setIsShowOutSide(false);

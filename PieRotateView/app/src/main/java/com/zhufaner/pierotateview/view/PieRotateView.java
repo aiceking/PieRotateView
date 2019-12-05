@@ -169,7 +169,6 @@ public class PieRotateView extends View {
                         rotate_degrees=90f-(pieRotate.getList_numbers().get(i) / pieRotate.getMax_number()* 360f/2f);
                         onSelectionListener.onSelect(0);
                         isFirstDraw=false;
-
                     }
                 }
                 //画扇形
