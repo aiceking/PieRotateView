@@ -2,6 +2,7 @@ package com.aice.pierotateview;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.wxy.pierotateview.model.PieRotateViewModel;
 import com.wxy.pierotateview.view.PieRotateView;
@@ -29,5 +30,11 @@ public class MainActivity extends AppCompatActivity {
         list.add(new PieRotateViewModel("1",10,getResources().getColor(R.color.colorPrimaryDark)));
         list.add(new PieRotateViewModel("1",10, Color.BLUE));
         pie.setPieRotateViewModelList(list);
+        pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
+            @Override
+            public void onSelect(int id) {
+                Toast.makeText(MainActivity.this, id+"", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

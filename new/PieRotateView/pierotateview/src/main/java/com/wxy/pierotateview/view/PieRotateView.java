@@ -15,6 +15,7 @@ import android.view.View;
 import com.wxy.pierotateview.R;
 import com.wxy.pierotateview.model.PieRotateViewModel;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,8 @@ public class PieRotateView extends View {
     protected static final int DEFUALT_VIEW_WIDTH=400;
     protected static final int DEFUALT_VIEW_HEIGHT=400;
     private float radius,centerX,centerY;
+    private int selectPosition;
+    private boolean isFirstDraw;
     private float downX,downY,lastX,lastY;
     private float sum;
     public void setCircleColor(int circleColor) {
@@ -33,12 +36,18 @@ public class PieRotateView extends View {
         textPaint.setColor(textColor);
     }
 
+    public void setOnSelectionListener(PieRotateView.onSelectionListener onSelectionListener) {
+        this.onSelectionListener = onSelectionListener;
+    }
+
+    private onSelectionListener onSelectionListener;
     private List<PieRotateViewModel> pieRotateViewModelList;
     public void setPieRotateViewModelList(List<PieRotateViewModel> pieRotateViewModelList) {
         this.pieRotateViewModelList = pieRotateViewModelList;
         for (PieRotateViewModel pieRotateViewModel:pieRotateViewModelList){
             sum+=pieRotateViewModel.getNum();
         }
+        selectPosition=1;
         invalidate();
     }
 
@@ -61,6 +70,7 @@ public class PieRotateView extends View {
         textPaint=new Paint();
         textPaint.setAntiAlias(true);
         textPaint.setTextAlign(Paint.Align.CENTER);
+        isFirstDraw=true;
     }
 
     @Override
@@ -114,12 +124,18 @@ public class PieRotateView extends View {
         }
         //先画所有扇形
         drawDataArc(canvas);
+        if (isFirstDraw){
+            if (onSelectionListener!=null){
+                onSelectionListener.onSelect(selectPosition);
+            }
+            isFirstDraw=false;
+        }
         //画中间的圆形
         canvas.drawCircle(centerX,centerY,radius/2.4f,circlePaint);
-        //画Text
+        //画Textf
         textPaint.setTextSize(radius/4.2f);
         textPaint.setColor(Color.WHITE);
-        canvas.drawText("20%",centerX,centerY-getTextOffset(textPaint,"20%"),textPaint);
+        canvas.drawText(trimFloat(pieRotateViewModelList.get(selectPosition).getNum()/sum)+"%",centerX,centerY-getTextOffset(textPaint,"20%"),textPaint);
         //画指针
         float arrowRadius=radius/4f;
         canvas.save();
@@ -152,9 +168,11 @@ public class PieRotateView extends View {
                     default:
                         hasDregee=hasDregee+  pieRotateViewModelList.get(i-1).getNum()/sum*360f  ;
                 }
+                pieRotateViewModelList.get(i).setStartDegree(hasDregee);
+                pieRotateViewModelList.get(i).setEndDegree(pieRotateViewModelList.get(i).getNum()/sum*360f);
                 canvas.drawArc(new RectF(centerX-radius, centerY-radius,
                                 centerX+radius, centerY+radius),
-                        hasDregee, pieRotateViewModelList.get(i).getNum()/sum*360f, true, piePaint);
+                        pieRotateViewModelList.get(i).getStartDegree(), pieRotateViewModelList.get(i).getEndDegree(), true, piePaint);
 
             }
         }
@@ -205,5 +223,14 @@ public class PieRotateView extends View {
             degree=0;
         }
         return degree;
+    }
+
+    public static int trimFloat(float value) {
+        DecimalFormat df   =new   DecimalFormat("#.00");
+        return (int)(Float.parseFloat(df.format(value))*100f);
+
+    }
+    public interface onSelectionListener{
+        void onSelect(int id);
     }
 }

@@ -1,8 +1,28 @@
 package com.wxy.pierotateview.model;
 
+import java.nio.file.Path;
+
 public class PieRotateViewModel {
     private String name;
     private float num;
+    private Path path;
+    private int color;
+    private float centerDregee;
+    public float getCenterDregee() {
+        return centerDregee;
+    }
+
+    public void setCenterDregee(float centerDregee) {
+        this.centerDregee = centerDregee;
+    }
+
+    public Path getPath() {
+        return path;
+    }
+
+    public void setPath(Path path) {
+        this.path = path;
+    }
 
     public int getColor() {
         return color;
@@ -12,7 +32,6 @@ public class PieRotateViewModel {
         this.color = color;
     }
 
-    private int color;
 
     public PieRotateViewModel(String name, float num, int color) {
         this.name = name;

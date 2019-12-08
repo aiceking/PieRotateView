@@ -8,7 +8,7 @@
     tools:context="com.aice.pierotateview.MainActivity">
 
     <com.wxy.pierotateview.view.PieRotateView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:padding="10dp"
         android:id="@+id/pie"
