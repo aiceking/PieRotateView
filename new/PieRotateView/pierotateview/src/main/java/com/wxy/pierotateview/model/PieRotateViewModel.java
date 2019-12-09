@@ -10,6 +10,15 @@ public class PieRotateViewModel {
     private int color;
     private float centerDregee;
     private float selfDregee;
+    private String percent;
+
+    public String getPercent() {
+        return percent;
+    }
+
+    public void setPercent(String percent) {
+        this.percent = percent;
+    }
 
     public float getSelfDregee() {
         return selfDregee;

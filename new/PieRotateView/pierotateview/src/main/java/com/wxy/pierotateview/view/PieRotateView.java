@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.DecelerateInterpolator;
 
 import com.wxy.pierotateview.R;
@@ -25,7 +26,8 @@ import java.util.List;
 import androidx.annotation.Nullable;
 
 public class PieRotateView extends View {
-    private Paint piePaint,circlePaint,textPaint;
+    private String TAG="PieRotateView";
+    private Paint piePaint,circlePaint,textPaint,arrawPaint;
     protected static final int DEFUALT_VIEW_WIDTH=400;
     protected static final int DEFUALT_VIEW_HEIGHT=400;
     private float radius,centerX,centerY;
@@ -40,11 +42,19 @@ public class PieRotateView extends View {
     private ValueAnimator anim;//回弹动画
     private  float recoverStartValue;
 
+    public void setRecoverTime(int recoverTime) {
+        this.recoverTime = recoverTime;
+    }
+
+    private int recoverTime;
     public void setCircleColor(int circleColor) {
         circlePaint.setColor(circleColor);
     }
     public void setTextColor(int textColor) {
         textPaint.setColor(textColor);
+    }
+    public void setArrawColor(int textColor) {
+        arrawPaint.setColor(textColor);
     }
 
     public void setOnSelectionListener(PieRotateView.onSelectionListener onSelectionListener) {
@@ -78,10 +88,15 @@ public class PieRotateView extends View {
         circlePaint=new Paint();
         circlePaint.setAntiAlias(true);
         circlePaint.setColor(Color.parseColor("#75ffffff"));
+        arrawPaint=new Paint();
+        arrawPaint.setAntiAlias(true);
+        arrawPaint.setColor(Color.parseColor("#75ffffff"));
         textPaint=new Paint();
         textPaint.setAntiAlias(true);
+        textPaint.setColor(Color.WHITE);
         textPaint.setTextAlign(Paint.Align.CENTER);
         isFirstDraw=true;
+        recoverTime=300;
     }
 
     @Override
@@ -128,6 +143,10 @@ public class PieRotateView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (pieRotateViewModelList==null||pieRotateViewModelList.size()==0){
+            Log.v(TAG,"pieRotateViewModelList为空");
+            return;
+        }
         if (radius==0){
             radius= (Math.min(getWidth()-getPaddingLeft()-getPaddingRight(),getHeight())-getPaddingTop()-getPaddingBottom())/2;
                 centerX=getPaddingLeft()+(getWidth()-getPaddingLeft()-getPaddingRight())/2;
@@ -137,18 +156,17 @@ public class PieRotateView extends View {
         drawDataArc(canvas);
         if (isFirstDraw){
             if (onSelectionListener!=null){
-                onSelectionListener.onSelect(selectPosition);
+                onSelectionListener.onSelect(selectPosition,pieRotateViewModelList.get(selectPosition).getPercent());
             }
             isFirstDraw=false;
         }
         //画中间的圆形
         canvas.drawCircle(centerX,centerY,radius/2.4f,circlePaint);
-        //画Textf
+        //画Text
         textPaint.setTextSize(radius/4.2f);
-        textPaint.setColor(Color.WHITE);
-        canvas.drawText(trimFloat(pieRotateViewModelList.get(selectPosition).getNum()/sum)+"%",centerX,centerY-getTextOffset(textPaint,"20%"),textPaint);
+        canvas.drawText(pieRotateViewModelList.get(selectPosition).getPercent(),centerX,centerY-getTextOffset(textPaint,"20%"),textPaint);
         //画指针
-        float arrowRadius=radius/4f;
+        float arrowRadius=radius/5f;
         canvas.save();
         Path area=new Path();
         area.addCircle(centerX,centerY,radius, Path.Direction.CCW);
@@ -158,7 +176,7 @@ public class PieRotateView extends View {
         arrowPath.lineTo(centerX-arrowRadius/2,centerY+radius);
         arrowPath.lineTo(centerX+arrowRadius/2,centerY+radius);
         arrowPath.close();
-        canvas.drawPath(arrowPath,circlePaint);
+        canvas.drawPath(arrowPath,arrawPaint);
         canvas.restore();
     }
     public float getTextOffset(Paint paint, String text){
@@ -179,6 +197,7 @@ public class PieRotateView extends View {
                     default:
                         hasDregee=hasDregee+  pieRotateViewModelList.get(i-1).getNum()/sum*360f  ;
                 }
+                pieRotateViewModelList.get(i).setPercent(trimFloat(pieRotateViewModelList.get(i).getNum()/sum)+"%");
                 pieRotateViewModelList.get(i).setCenterDregee(getDregee(hasDregee+moveRotateDregee+(pieRotateViewModelList.get(i).getNum()/sum*360f/2f)));
                 pieRotateViewModelList.get(i).setSelfDregee(pieRotateViewModelList.get(i).getNum()/sum*360f);
                 if (pieRotateViewModelList.get(i).getPath()!=null){
@@ -227,8 +246,8 @@ private float getDregee(float dregee){
                     break;
                 }
                 rotateDregee=degree(event.getX(activePointerIndex),event.getY(activePointerIndex))-lastRotateDregee;
-                moveRotateDregee=moveRotateDregee+getDregee(rotateDregee);
-                selectRecover(true);
+                moveRotateDregee=getDregee(moveRotateDregee+rotateDregee);
+                selectRecover(true,(int) centerX,(int)(centerY+radius/2));
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -236,7 +255,21 @@ private float getDregee(float dregee){
                 break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                selectRecover(false);
+                mActivePointerId = INVALID_POINTER;
+                float clickX = downX - event.getX();
+                float clickY = downY -  event.getY();
+                if (Math.abs(clickX)<= ViewConfiguration.get(getContext()).getScaledTouchSlop()&&
+                        Math.abs(clickY)<= ViewConfiguration.get(getContext()).getScaledTouchSlop()){
+                    selectRecover(false,(int) event.getX(),(int)event.getY());
+                }else {
+                     int pointerId = event.getPointerId(0);
+                    mVelocityTracker.computeCurrentVelocity(1000, ViewConfiguration.getMaximumFlingVelocity());
+                     float velocityY = mVelocityTracker.getYVelocity(pointerId);
+                     float velocityX = mVelocityTracker.getXVelocity(pointerId);
+                     double velocityLinear=Math.sqrt(Double.parseDouble(String.valueOf(velocityX*velocityX+""))+Double.parseDouble(String.valueOf(velocityY*velocityY+"")));
+                     float velocityAngular= (float) (velocityLinear/radius);
+                    selectRecover(false,(int) centerX,(int)(centerY+radius/2));
+                }
                 break;
         }
         if (mActivePointerId != INVALID_POINTER) {
@@ -248,51 +281,62 @@ private float getDregee(float dregee){
     }
 
     //恢复到指针指向的部分的中心
-    private void selectRecover(boolean isMove){
+    private void selectRecover(boolean isMove,int x,int y){
         for (int i=0;i<pieRotateViewModelList.size();i++){
             Region re=new Region();
             RectF rf=new RectF();
             pieRotateViewModelList.get(i).getPath().computeBounds(rf,true);
             re.setPath(pieRotateViewModelList.get(i).getPath(),new Region((int)rf.left,(int)rf.top,(int)rf.right,(int)rf.bottom));
-            if (re.contains((int) centerX,(int)(centerY+radius/2))){
+            if (re.contains(x,y)){
                 selectPosition=i;
                 if (onSelectionListener!=null){
-                    onSelectionListener.onSelect(selectPosition);
+                    onSelectionListener.onSelect(selectPosition,pieRotateViewModelList.get(selectPosition).getPercent());
                 }
                 if (!isMove){
-                    Log.v("xixi=",moveRotateDregee+"");
-//                    if (pieRotateViewModelList.get(i).getCenterDregee()>270f){
-//                        float degree=360f-pieRotateViewModelList.get(i).getCenterDregee()+90f;
-//                        recover(degree,0);
-//
-//                    }else {
-//                        recover(0,pieRotateViewModelList.get(i).getCenterDregee()-90f);
-//                    }
+                    if (pieRotateViewModelList.get(i).getCenterDregee()>270f){
+                        float degree=360f-pieRotateViewModelList.get(i).getCenterDregee()+90f;
+                        recover(0,degree);
+
+                    }else if (pieRotateViewModelList.get(i).getCenterDregee()<90f){
+                        float degree=90f-pieRotateViewModelList.get(i).getCenterDregee();
+                        recover(0,degree);
+                    }else {
+                        recover(pieRotateViewModelList.get(i).getCenterDregee()-90f,0);
+
+                    }
                 }
                 break;
             }
         }
     }
     private void recover(final float start, final float end){
-        recoverStartValue=0;
+        if (start>end){
+            recoverStartValue=start;
+        }else {
+            recoverStartValue=0;
+        }
         if (anim==null) {
             anim = new ValueAnimator();
             anim.setInterpolator(new DecelerateInterpolator());
-            anim.setDuration(200);
+            anim.setDuration(recoverTime);
             anim.setFloatValues(start, end);
+            Log.v("xixi",start+"="+end);
             anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
+                    Log.v("xixi=",(float) animation.getAnimatedValue()+"");
                     float currentValue = (float) animation.getAnimatedValue()-recoverStartValue;
                         moveRotateDregee=moveRotateDregee+currentValue;
-                    invalidate();
-                    recoverStartValue=(float) animation.getAnimatedValue();
+                        recoverStartValue=(float) animation.getAnimatedValue();
+                        invalidate();
+
                 }
             });
             anim.start();
         }else {
             if (!anim.isRunning()){
-                anim.setDuration(200);
+                Log.v("xixi",start+"="+end);
+                anim.setDuration(recoverTime);
                 anim.setFloatValues(start, end);
                 anim.start();
             }
@@ -364,6 +408,6 @@ private float getDregee(float dregee){
 
     }
     public interface onSelectionListener{
-        void onSelect(int position);
+        void onSelect(int position,String percent);
     }
 }
