@@ -260,14 +260,14 @@ private float getDregee(float dregee){
                     onSelectionListener.onSelect(selectPosition);
                 }
                 if (!isMove){
-                    Log.v("xixi=",lastRotateDregee+"");
-                    if (pieRotateViewModelList.get(i).getCenterDregee()>270f){
-                        float degree=360f-pieRotateViewModelList.get(i).getCenterDregee()+90f;
-                        recover(degree,0);
-
-                    }else {
-                        recover(0,pieRotateViewModelList.get(i).getCenterDregee()-90f);
-                    }
+                    Log.v("xixi=",moveRotateDregee+"");
+//                    if (pieRotateViewModelList.get(i).getCenterDregee()>270f){
+//                        float degree=360f-pieRotateViewModelList.get(i).getCenterDregee()+90f;
+//                        recover(degree,0);
+//
+//                    }else {
+//                        recover(0,pieRotateViewModelList.get(i).getCenterDregee()-90f);
+//                    }
                 }
                 break;
             }
