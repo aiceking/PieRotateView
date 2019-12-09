@@ -13,5 +13,13 @@
         android:padding="10dp"
         android:id="@+id/pie"
         android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="20dp"
+    android:textSize="18sp"
+    android:id="@+id/tv_name">
 
+</TextView>
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.wxy.pierotateview.view;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,10 +8,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Region;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
 import com.wxy.pierotateview.R;
 import com.wxy.pierotateview.model.PieRotateViewModel;
@@ -28,7 +32,14 @@ public class PieRotateView extends View {
     private int selectPosition;
     private boolean isFirstDraw;
     private float downX,downY,lastX,lastY;
+    private float lastRotateDregee,rotateDregee,moveRotateDregee;
     private float sum;
+    private int mActivePointerId;
+    private  final int INVALID_POINTER = -1;
+    protected VelocityTracker mVelocityTracker;
+    private ValueAnimator anim;//回弹动画
+    private  float recoverStartValue;
+
     public void setCircleColor(int circleColor) {
         circlePaint.setColor(circleColor);
     }
@@ -47,7 +58,7 @@ public class PieRotateView extends View {
         for (PieRotateViewModel pieRotateViewModel:pieRotateViewModelList){
             sum+=pieRotateViewModel.getNum();
         }
-        selectPosition=1;
+        selectPosition=0;
         invalidate();
     }
 
@@ -168,23 +179,145 @@ public class PieRotateView extends View {
                     default:
                         hasDregee=hasDregee+  pieRotateViewModelList.get(i-1).getNum()/sum*360f  ;
                 }
-                pieRotateViewModelList.get(i).setStartDegree(hasDregee);
-                pieRotateViewModelList.get(i).setEndDegree(pieRotateViewModelList.get(i).getNum()/sum*360f);
-                canvas.drawArc(new RectF(centerX-radius, centerY-radius,
-                                centerX+radius, centerY+radius),
-                        pieRotateViewModelList.get(i).getStartDegree(), pieRotateViewModelList.get(i).getEndDegree(), true, piePaint);
+                pieRotateViewModelList.get(i).setCenterDregee(getDregee(hasDregee+moveRotateDregee+(pieRotateViewModelList.get(i).getNum()/sum*360f/2f)));
+                pieRotateViewModelList.get(i).setSelfDregee(pieRotateViewModelList.get(i).getNum()/sum*360f);
+                if (pieRotateViewModelList.get(i).getPath()!=null){
+                    Path path=pieRotateViewModelList.get(i).getPath();
+                    path.reset();
+                    path.moveTo(centerX,centerY);
+                    path.arcTo(new RectF(centerX-radius, centerY-radius,
+                            centerX+radius, centerY+radius),hasDregee+moveRotateDregee, pieRotateViewModelList.get(i).getSelfDregee());
+                }else {
+                    Path path=new Path();
+                    path.moveTo(centerX,centerY);
+                    path.arcTo(new RectF(centerX-radius, centerY-radius,
+                            centerX+radius, centerY+radius),hasDregee+moveRotateDregee, pieRotateViewModelList.get(i).getSelfDregee());
+                    pieRotateViewModelList.get(i).setPath(path);
+                }
+                 canvas.drawPath(pieRotateViewModelList.get(i).getPath(),piePaint);
+            }
+        }
+    }
+private float getDregee(float dregee){
+        return dregee<0?(dregee+360f)%360f:dregee%360f;
+}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mVelocityTracker == null) {
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+        mVelocityTracker.addMovement(event);
+        switch (event.getAction()& MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                mActivePointerId=event.getPointerId(0);
+                downX= event.getX();
+                downY= event.getY();
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                //如果有新的手指按下，就直接把它当作当前活跃的指针
+                final int index = event.getActionIndex();
+                mActivePointerId = event.getPointerId(index);
+                //并且刷新上一次记录的旧坐标值
+                downX=(int) event.getX(index);
+                downY=(int) event.getY(index);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int activePointerIndex = event.findPointerIndex(mActivePointerId);
+                if (activePointerIndex == INVALID_POINTER) {
+                    break;
+                }
+                rotateDregee=degree(event.getX(activePointerIndex),event.getY(activePointerIndex))-lastRotateDregee;
+                moveRotateDregee=moveRotateDregee+getDregee(rotateDregee);
+                selectRecover(true);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                onSecondaryPointerUp(event);
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                selectRecover(false);
+                break;
+        }
+        if (mActivePointerId != INVALID_POINTER) {
+            lastRotateDregee = degree(event.getX(event.findPointerIndex(mActivePointerId)),event.getY(event.findPointerIndex(mActivePointerId)));
+        }else {
+            lastRotateDregee = degree(event.getX(),event.getY()) ;
+        }
+        return true;
+    }
 
+    //恢复到指针指向的部分的中心
+    private void selectRecover(boolean isMove){
+        for (int i=0;i<pieRotateViewModelList.size();i++){
+            Region re=new Region();
+            RectF rf=new RectF();
+            pieRotateViewModelList.get(i).getPath().computeBounds(rf,true);
+            re.setPath(pieRotateViewModelList.get(i).getPath(),new Region((int)rf.left,(int)rf.top,(int)rf.right,(int)rf.bottom));
+            if (re.contains((int) centerX,(int)(centerY+radius/2))){
+                selectPosition=i;
+                if (onSelectionListener!=null){
+                    onSelectionListener.onSelect(selectPosition);
+                }
+                if (!isMove){
+                    Log.v("xixi=",lastRotateDregee+"");
+                    if (pieRotateViewModelList.get(i).getCenterDregee()>270f){
+                        float degree=360f-pieRotateViewModelList.get(i).getCenterDregee()+90f;
+                        recover(degree,0);
+
+                    }else {
+                        recover(0,pieRotateViewModelList.get(i).getCenterDregee()-90f);
+                    }
+                }
+                break;
+            }
+        }
+    }
+    private void recover(final float start, final float end){
+        recoverStartValue=0;
+        if (anim==null) {
+            anim = new ValueAnimator();
+            anim.setInterpolator(new DecelerateInterpolator());
+            anim.setDuration(200);
+            anim.setFloatValues(start, end);
+            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float currentValue = (float) animation.getAnimatedValue()-recoverStartValue;
+                        moveRotateDregee=moveRotateDregee+currentValue;
+                    invalidate();
+                    recoverStartValue=(float) animation.getAnimatedValue();
+                }
+            });
+            anim.start();
+        }else {
+            if (!anim.isRunning()){
+                anim.setDuration(200);
+                anim.setFloatValues(start, end);
+                anim.start();
             }
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return true;
+    private void onSecondaryPointerUp(MotionEvent ev) {
+        int pointerIndex = ev.getActionIndex();
+        int pointerId = ev.getPointerId(pointerIndex);
+        //如果抬起的那根手指，刚好是当前活跃的手指，那么
+        if (pointerId == mActivePointerId) {
+            //另选一根手指，并把它标记为活跃
+            int newPointerIndex =  pointerIndex == 0 ? 1 : 0;
+            mActivePointerId = ev.getPointerId(newPointerIndex);
+            //把上一次记录的坐标，更新为新手指的当前坐标
+            downX = (int) ev.getX(newPointerIndex);
+            downY =(int)  ev.getY(newPointerIndex);
+            if (mVelocityTracker != null) {
+                mVelocityTracker.clear();
+            }
+        }
     }
     /**获得相对于X轴正方向的夹角*/
 
-    public float degree(float x, float y){
+    private float degree(float x, float y){
         float detaX = x - centerX;
         float detaY = y - centerY;
         float degree=0;
@@ -231,6 +364,6 @@ public class PieRotateView extends View {
 
     }
     public interface onSelectionListener{
-        void onSelect(int id);
+        void onSelect(int position);
     }
 }

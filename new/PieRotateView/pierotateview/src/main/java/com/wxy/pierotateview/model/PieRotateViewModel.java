@@ -1,6 +1,7 @@
 package com.wxy.pierotateview.model;
 
-import java.nio.file.Path;
+
+import android.graphics.Path;
 
 public class PieRotateViewModel {
     private String name;
@@ -8,6 +9,16 @@ public class PieRotateViewModel {
     private Path path;
     private int color;
     private float centerDregee;
+    private float selfDregee;
+
+    public float getSelfDregee() {
+        return selfDregee;
+    }
+
+    public void setSelfDregee(float selfDregee) {
+        this.selfDregee = selfDregee;
+    }
+
     public float getCenterDregee() {
         return centerDregee;
     }
