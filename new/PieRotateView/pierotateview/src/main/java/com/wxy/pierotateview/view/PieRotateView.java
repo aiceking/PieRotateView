@@ -1,5 +1,6 @@
 package com.wxy.pierotateview.view;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -324,11 +325,29 @@ private float getDregee(float dregee){
             anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    Log.v("xixi=",(float) animation.getAnimatedValue()+"");
                     float currentValue = (float) animation.getAnimatedValue()-recoverStartValue;
-                        moveRotateDregee=moveRotateDregee+currentValue;
+                    moveRotateDregee=moveRotateDregee+currentValue;
                         recoverStartValue=(float) animation.getAnimatedValue();
                         invalidate();
+
+                }
+            });
+            anim.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                }
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Log.v("xixi=",recoverStartValue+"");
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
 
                 }
             });
