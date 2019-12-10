@@ -39,16 +39,24 @@ public class PieRotateView extends View {
     private float radius,centerX,centerY;
     private int selectPosition;
     private boolean isClick;
-    private float downX,downY,lastX,lastY;
+    private float downX,downY;
     private float lastRotateDregee,rotateDregee,moveRotateDregee;
     private float sum;
     private int mActivePointerId;
     private  final int INVALID_POINTER = -1;
     protected VelocityTracker mVelocityTracker;
-    private ValueAnimator anim;//回弹动画
+    private ValueAnimator recoverAnim;//回弹动画
     private  float recoverStartValue;
+    private ValueAnimator flingAnim;//回弹动画
+    private  float flingStartValue;
     private boolean isRecover;
-    private int clickPointX,clickPointY;
+    private boolean isFling;
+    private int flingDirection;//fling旋转的方向：1顺时针,2逆时针
+    //是否可以惯性转动
+    public void setFling(boolean fling) {
+        isFling = fling;
+    }
+
     public void setRecoverTime(int recoverTime) {
         this.recoverTime = recoverTime;
     }
@@ -75,7 +83,7 @@ public class PieRotateView extends View {
         for (PieRotateViewModel pieRotateViewModel:pieRotateViewModelList){
             sum+=pieRotateViewModel.getNum();
         }
-        selectPosition=0;
+        selectPosition=-1;
         invalidate();
     }
 
@@ -222,9 +230,11 @@ public class PieRotateView extends View {
                 pieRotateViewModelList.get(i).getPath().computeBounds(rf,true);
                 re.setPath(pieRotateViewModelList.get(i).getPath(),new Region((int)rf.left,(int)rf.top,(int)rf.right,(int)rf.bottom));
                 if (re.contains((int) centerX,(int)(centerY+radius/2))){
+                    if (selectPosition!=i){
                     selectPosition=i;
                     if (onSelectionListener!=null){
                         onSelectionListener.onSelect(selectPosition,pieRotateViewModelList.get(selectPosition).getPercent());
+                    }
                     }
                     //这是恢复到指针中心位置
                     if (isRecover){
@@ -257,8 +267,11 @@ private float getDregee(float dregee){
         mVelocityTracker.addMovement(event);
         switch (event.getAction()& MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                if (anim!=null){
-                    anim.cancel();
+                if (recoverAnim!=null){
+                    recoverAnim.cancel();
+                }
+                if (flingAnim!=null){
+                    flingAnim.cancel();
                 }
                 isRecover=false;
                 isClick=false;
@@ -280,7 +293,14 @@ private float getDregee(float dregee){
                     break;
                 }
                 rotateDregee=degree(event.getX(activePointerIndex),event.getY(activePointerIndex))-lastRotateDregee;
+                float a=moveRotateDregee;
                 moveRotateDregee=getDregee(moveRotateDregee+rotateDregee);
+                //判断旋转的方向
+                if (a<moveRotateDregee){
+                    flingDirection=1;
+                }else {
+                    flingDirection=2;
+                }
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -297,14 +317,31 @@ private float getDregee(float dregee){
                     isRecover=true;
                     selectRecover((int) event.getX(),(int)event.getY());
                 }else {
-//                     int pointerId = event.getPointerId(0);
-//                    mVelocityTracker.computeCurrentVelocity(1000, ViewConfiguration.getMaximumFlingVelocity());
-//                     float velocityY = mVelocityTracker.getYVelocity(pointerId);
-//                     float velocityX = mVelocityTracker.getXVelocity(pointerId);
-//                     double velocityLinear=Math.sqrt(Double.parseDouble(String.valueOf(velocityX*velocityX+""))+Double.parseDouble(String.valueOf(velocityY*velocityY+"")));
-//                     float velocityAngular= (float) (velocityLinear/radius);
-                    isRecover=true;
-                    invalidate();
+                    if (isFling){
+                        int pointerId = event.getPointerId(0);
+                        mVelocityTracker.computeCurrentVelocity(1000, ViewConfiguration.getMaximumFlingVelocity());
+                        float velocityX = mVelocityTracker.getXVelocity(pointerId);
+                        float velocityY = mVelocityTracker.getYVelocity(pointerId);
+                        double velocityLinear=Math.sqrt(Double.parseDouble(String.valueOf(velocityX*velocityX+""))+Double.parseDouble(String.valueOf(velocityY*velocityY+"")));
+                        if (velocityLinear>1000){
+                            Log.v("xixi=",velocityLinear+"");
+                            if (velocityLinear>5000){
+                                dealFling(velocityLinear/5.2,(int) (velocityLinear/4.2));
+                            }else {
+                                dealFling(velocityLinear/9,(int) (velocityLinear/4.6));
+                            }
+                        }
+                        else {
+                            isRecover=true;
+                            invalidate();
+                        }
+
+                    }else {
+                        isRecover=true;
+                        invalidate();
+                    }
+
+
                 }
                 break;
         }
@@ -315,8 +352,68 @@ private float getDregee(float dregee){
         }
         return true;
     }
+    //处理惯性滚动事件
+    private void dealFling(double velocityLinear,int time) {
+        if (flingDirection==2){
+            flingStartValue= (float) velocityLinear;
+        }else {
+            flingStartValue=0;
+        }
+        if (flingAnim==null) {
+            flingAnim = new ValueAnimator();
+            flingAnim.setInterpolator(new DecelerateInterpolator());
+            flingAnim.setDuration(time);
+            if (flingDirection==2){
+                flingAnim.setFloatValues((float)velocityLinear, 0);
+            }else {
+                flingAnim.setFloatValues(0, (float)velocityLinear);
+            }
+            flingAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float currentValue = (float) animation.getAnimatedValue()-flingStartValue;
+                    flingStartValue=(float) animation.getAnimatedValue();
+                    moveRotateDregee=getDregee(moveRotateDregee+currentValue);
+                    invalidate();
+                }
+            });
+            flingAnim.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
 
-    //恢复到指针指向的部分的中心
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    isRecover=true;
+                    invalidate();
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
+            flingAnim.start();
+        }else {
+            if (!flingAnim.isRunning()){
+                flingAnim.setDuration(time);
+                if (flingDirection==2){
+                    flingAnim.setFloatValues((float)velocityLinear, 0);
+                }else {
+                    flingAnim.setFloatValues(0, (float)velocityLinear);
+                }
+                flingAnim.start();
+            }
+        }
+    }
+
+    //点击事件旋转到点击所选的区域
     private void selectRecover(int x,int y){
         for (int i=0;i<pieRotateViewModelList.size();i++){
             Region re=new Region();
@@ -347,27 +444,26 @@ private float getDregee(float dregee){
         }else {
             recoverStartValue=0;
         }
-        if (anim==null) {
-            anim = new ValueAnimator();
-            anim.setInterpolator(new DecelerateInterpolator());
-            anim.setDuration(recoverTime);
-            anim.setFloatValues(start, end);
-            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        if (recoverAnim==null) {
+            recoverAnim = new ValueAnimator();
+            recoverAnim.setInterpolator(new DecelerateInterpolator());
+            recoverAnim.setDuration(recoverTime);
+            recoverAnim.setFloatValues(start, end);
+            recoverAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     float currentValue = (float) animation.getAnimatedValue()-recoverStartValue;
                         recoverStartValue=(float) animation.getAnimatedValue();
-                    moveRotateDregee=moveRotateDregee+currentValue;
+                    moveRotateDregee=getDregee(moveRotateDregee+currentValue);
                     invalidate();
-
                 }
             });
-            anim.start();
+            recoverAnim.start();
         }else {
-            if (!anim.isRunning()){
-                anim.setDuration(recoverTime);
-                anim.setFloatValues(start, end);
-                anim.start();
+            if (!recoverAnim.isRunning()){
+                recoverAnim.setDuration(recoverTime);
+                recoverAnim.setFloatValues(start, end);
+                recoverAnim.start();
             }
         }
     }

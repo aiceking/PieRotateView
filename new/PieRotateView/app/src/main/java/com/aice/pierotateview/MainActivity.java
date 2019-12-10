@@ -2,6 +2,7 @@ package com.aice.pierotateview;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new PieRotateViewModel("粉扇", 50, Color.parseColor("#EE7AE9")));
         pie.setPieRotateViewModelList(list);
         pie.setRecoverTime(300);
+        pie.setFling(true);
         pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
             @Override
             public void onSelect(int position,String percent) {
