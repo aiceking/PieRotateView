@@ -9,6 +9,8 @@ android自定义View，带旋转动画的饼状图
 
 旋转过程中停止触摸，会有回弹动画到该区块
 
+| 常规使用      |下拉刷新及其他滑动冲突  |
+| :--------:| :--------:|  
+|![normal](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo2.gif)| 
+ <br />
 
-![Image text](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo1.gif)
-![Image text](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo2.gif)
