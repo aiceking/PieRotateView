@@ -74,12 +74,12 @@ public class NormalActivity extends AppCompatActivity {
                 if (switchFling.isOpened()) {
                     pie.setFling(true);
                     tvFling.setText("是否允许Fling：是");
-                    pie.notifyDataSetChanged();
+                    pie.notifySettingChanged();
                 } else {
                     pie.setFling(false);
                     tvFling.setText("是否允许Fling：否");
 
-                    pie.notifyDataSetChanged();
+                    pie.notifySettingChanged();
                 }
             }
         });
@@ -89,7 +89,7 @@ public class NormalActivity extends AppCompatActivity {
                 int recoverTime = (int) ((float) progress / 100 * 1000);
                 pie.setRecoverTime(recoverTime);
                 tvRecovreTime.setText("recoverTime：" + recoverTime);
-                pie.notifyDataSetChanged();
+                pie.notifySettingChanged();
             }
 
             @Override
@@ -120,7 +120,7 @@ public class NormalActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setCircleColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;
@@ -138,7 +138,7 @@ public class NormalActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setTextColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;
@@ -156,7 +156,7 @@ public class NormalActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setArrawColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;

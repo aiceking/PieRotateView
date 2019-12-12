@@ -79,10 +79,10 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        List<PieRotateViewModel> list = new ArrayList<>();
+                        list.clear();
                         list.add(new PieRotateViewModel("红扇", 20, getResources().getColor(R.color.colorAccent)));
                         list.add(new PieRotateViewModel("绿扇", 10, getResources().getColor(R.color.colorPrimaryDark)));
-                        pie.setPieRotateViewModelList(list);
+                        pie.notifyDataChangeChanged();
                         swipe.setRefreshing(false);
                         pie.setEnableTouch(true);
                     }
@@ -124,12 +124,12 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                 if (switchFling.isOpened()) {
                     pie.setFling(true);
                     tvFling.setText("是否允许Fling：是");
-                    pie.notifyDataSetChanged();
+                    pie.notifySettingChanged();
                 } else {
                     pie.setFling(false);
                     tvFling.setText("是否允许Fling：否");
 
-                    pie.notifyDataSetChanged();
+                    pie.notifySettingChanged();
                 }
             }
         });
@@ -139,7 +139,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                 int recoverTime = (int) ((float) progress / 100 * 1000);
                 pie.setRecoverTime(recoverTime);
                 tvRecovreTime.setText("recoverTime：" + recoverTime);
-                pie.notifyDataSetChanged();
+                pie.notifySettingChanged();
             }
 
             @Override
@@ -171,7 +171,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setCircleColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;
@@ -189,7 +189,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setTextColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;
@@ -207,7 +207,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                             @Override
                             public void onColorPicked(int color) {
                                 pie.setArrawColor(color);
-                                pie.notifyDataSetChanged();
+                                pie.notifySettingChanged();
                             }
                         });
                 break;

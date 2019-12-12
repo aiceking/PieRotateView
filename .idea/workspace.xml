@@ -10,7 +10,12 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41179fce-a00b-4159-bdcc-9e68a29ca816" name="Default Changelist" comment="" />
+    <list default="true" id="41179fce-a00b-4159-bdcc-9e68a29ca816" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PieRotateView/src/main/java/com/wxy/pierotateview/view/PieRotateView.java" beforeDir="false" afterPath="$PROJECT_DIR$/PieRotateView/src/main/java/com/wxy/pierotateview/view/PieRotateView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/NormalActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/NormalActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,17 +49,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="135" column="70" selection-start-line="135" selection-start-column="70" selection-end-line="135" selection-end-column="70" />
+            <state relative-caret-position="61">
+              <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
+              <folding>
+                <element signature="e#3507#4151#0" expanded="true" />
+                <element signature="e#4150#4151#0" expanded="true" />
+                <element signature="e#6591#6915#0" expanded="true" />
+                <element signature="e#6914#6915#0" expanded="true" />
+                <element signature="e#7501#7823#0" expanded="true" />
+                <element signature="e#7822#7823#0" expanded="true" />
+                <element signature="e#8410#8733#0" expanded="true" />
+                <element signature="e#8732#8733#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/NormalActivity.java">
+        <entry file="file://$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+            <state relative-caret-position="547">
+              <caret line="108" column="36" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2961#2962#0" expanded="true" />
+                <element signature="e#2989#2990#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,7 +91,13 @@
       <find>recoverAnim</find>
       <find>isRecover</find>
       <find>nested</find>
+      <find>notifyDataSetChanged</find>
+      <find>notifyDataChangeChanged</find>
     </findStrings>
+    <replaceStrings>
+      <replace>notifySettingChanged</replace>
+      <replace>notifyDataChangeChanged</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,14 +112,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_normal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java" />
         <option value="$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/NormalActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="25" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-2557" />
     <option name="y" value="23" />
     <option name="width" value="2560" />
     <option name="height" value="1316" />
@@ -138,9 +164,25 @@
             </path>
             <path>
               <item name="PieRotateView" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="pierotateview" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="PieRotateView" type="1abcf292:AndroidViewProjectNode" />
+              <item name="pierotateview" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="PieRotateView" type="1abcf292:AndroidViewProjectNode" />
+              <item name="pierotateview" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="pierotateview" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PieRotateView" type="1abcf292:AndroidViewProjectNode" />
+              <item name="pierotateview" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="pierotateview" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PieRotateView" type="1abcf292:AndroidViewProjectNode" />
@@ -304,7 +346,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="2560" height="1316" extended-state="6" />
+    <frame x="1" y="23" width="2560" height="1316" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -317,16 +359,16 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Build Variants" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Find" weight="0.32993197" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32993197" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" order="4" visible="true" weight="0.37585035" />
+      <window_info anchor="bottom" id="Logcat" order="4" weight="0.37585035" />
       <window_info anchor="bottom" id="Android Profiler" order="5" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Statistic" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" />
-      <window_info anchor="bottom" id="Build" order="9" weight="0.32993197" />
+      <window_info anchor="bottom" id="Build" order="9" visible="true" weight="0.32993197" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Android WiFi ADB" order="2" />
@@ -405,14 +447,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_swiprefresh_appbar.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -436,27 +470,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_swiprefresh_appbar.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="90" column="36" lean-forward="true" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="466">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/NormalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="52" column="73" lean-forward="true" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
+          <folding>
+            <element signature="e#4478#4802#0" expanded="true" />
+            <element signature="e#4801#4802#0" expanded="true" />
+            <element signature="e#5388#5710#0" expanded="true" />
+            <element signature="e#5709#5710#0" expanded="true" />
+            <element signature="e#6297#6620#0" expanded="true" />
+            <element signature="e#6619#6620#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="108" column="36" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2961#2962#0" expanded="true" />
+            <element signature="e#2989#2990#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/SwipRefreshAppbarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="135" column="70" selection-start-line="135" selection-start-column="70" selection-end-line="135" selection-end-column="70" />
+        <state relative-caret-position="61">
+          <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
+          <folding>
+            <element signature="e#3507#4151#0" expanded="true" />
+            <element signature="e#4150#4151#0" expanded="true" />
+            <element signature="e#6591#6915#0" expanded="true" />
+            <element signature="e#6914#6915#0" expanded="true" />
+            <element signature="e#7501#7823#0" expanded="true" />
+            <element signature="e#7822#7823#0" expanded="true" />
+            <element signature="e#8410#8733#0" expanded="true" />
+            <element signature="e#8732#8733#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

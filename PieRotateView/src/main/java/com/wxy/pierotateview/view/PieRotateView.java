@@ -88,7 +88,25 @@ public class PieRotateView extends View  {
         this.onSelectionListener = onSelectionListener;
     }
     //刷新view
-    public void notifyDataSetChanged(){
+    public void notifyDataChangeChanged(){
+        if (recoverAnim!=null){
+            recoverAnim.cancel();
+        }
+        if (flingAnim!=null){
+            flingAnim.cancel();
+        }
+        isRecover=false;
+        isClick=false;
+        sum=0;
+        moveRotateDregee=0;
+        for (PieRotateViewModel pieRotateViewModel:pieRotateViewModelList){
+            sum+=pieRotateViewModel.getNum();
+        }
+        selectPosition=-1;
+        invalidate();
+    }
+    //刷新view
+    public void notifySettingChanged(){
         invalidate();
     }
     private onSelectionListener onSelectionListener;
