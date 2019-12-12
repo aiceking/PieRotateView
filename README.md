@@ -13,7 +13,7 @@
    * 2、暴露事件冲突接口，允许外界操作父控件的事件及该view自己的事件（因为这只是个View，没办法直接处理所有的滑动冲突场景）
    * 3、内存抖动要小，防止内存溢出。
 -------------------
-# 示例，Demo演示了普通用法和涉及到SwipeRefreshLayout+AppBarLayout等类似的滑动冲突的用法。
+# 示例，Demo演示了普通用法和涉及到SwipeRefreshLayout+AppBarLayout等类似的滑动冲突的用法（细节请看代码）。
 * **1、普通使用** ：没啥可说的，只有Down的点在圆的范围内才可以响应事件，否则通知父控件拦截
 * **2、下拉刷新及其他滑动冲突** ：
    * 1、Down的点在圆内，通过onPromiseParentTouchListener方法中使用SwipeRefreshLayout.setEnabled(promise)通知外界设置SwipeRefreshLayout不可以滑动。
@@ -25,3 +25,8 @@
 |![normal](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo2.gif)| 
  <br />
 
+# 使用  
+* [基本API](#基本API)
+* [使用](#常规的使用还是很简单的)
+    * [引入](#引入)
+    * [设置Data和属性](#设置Data和属性)
