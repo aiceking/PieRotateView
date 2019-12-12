@@ -13,7 +13,8 @@
    * 2、暴露事件冲突接口，允许外界操作父控件的事件及该view自己的事件（因为这只是个View，没办法直接处理所有的滑动冲突场景）
    * 3、内存抖动要小，防止内存溢出。
 -------------------
-# 示例，Demo演示了普通用法和涉及到SwipeRefreshLayout+AppBarLayout等类似的滑动冲突的用法（细节请看代码）。
+# 示例
+## Demo演示了普通用法和涉及到SwipeRefreshLayout+AppBarLayout等类似的滑动冲突的用法（细节请看代码）。
 * **1、普通使用** ：没啥可说的，只有Down的点在圆的范围内才可以响应事件，否则通知父控件拦截
 * **2、下拉刷新及其他滑动冲突** ：
    * 1、Down的点在圆内，通过onPromiseParentTouchListener方法中使用SwipeRefreshLayout.setEnabled(promise)通知外界设置SwipeRefreshLayout不可以滑动。
@@ -120,6 +121,15 @@ swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
         });	
 ```
 
-### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之，则需要在设置之后调用notifySettingChanged()通知View刷新
+### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之设置下方的属性后，需要再调用notifySettingChanged()通知View刷新,
+
+|方法  |参数  | 作用  |
+| :--------| :--------| :--: |
+|setFling  |boolean  | 设置是否可以惯性滑动  |
+|setRecoverTime  |int  | 设置回弹动画的时长  |
+|setCircleColor  |int  | 设置中间遮罩圆的颜色  | 
+|setTextColor  |int  | 设置中间Text文本的颜色  | 
+|setArrawColor  |int  | 设置下方指针箭头的颜色  | 
+
 
 
