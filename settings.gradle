@@ -1,2 +1,2 @@
-include ':app', ':pierotateview'
+include ':app', ':pierotateviewlibrary'
 rootProject.name='PieRotateView'

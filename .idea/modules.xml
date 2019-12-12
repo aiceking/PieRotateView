@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PieRotateView.iml" filepath="$PROJECT_DIR$/.idea/PieRotateView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pierotateview/pierotateview.iml" filepath="$PROJECT_DIR$/pierotateview/pierotateview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pierotateviewlibrary/pierotateviewlibrary.iml" filepath="$PROJECT_DIR$/pierotateviewlibrary/pierotateviewlibrary.iml" />
     </modules>
   </component>
 </project>
