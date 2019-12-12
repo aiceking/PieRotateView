@@ -29,11 +29,11 @@
 * [基本API](#基本API)
 * [使用](#使用)
     * [引入](#引入)
-    * [布局XML中添加](#布局XML中添加)
+    * [布局XML中添加](#布局XML中添加（系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的pad到padding决定）)
     * [代码中设置Data和属性](#代码中设置Data和属性)
 
 # 基本API
-## Data实例类 PieRotateViewModel，以下为试用期间会接触到的属性，别的属性都是为绘制准备的，不用关心
+## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
 
 |属性  | 作用  |
 | :--------| :--: |
@@ -46,4 +46,41 @@
 
 |方法  |参数  | 作用  |
 | :--------| :--------| :--: |
+|setEnableTouch  |boolean  | 设置是否可以消费事件（默认为true）  |
+|setPieRotateViewModelList  |List<PieRotateViewModel>  | 设置Data  |
+|setFling  |boolean  | 设置是否可以惯性滑动  |
+|setRecoverTime  |int  | 设置回弹动画的时长  |
+|setCircleColor  |int  | 设置中间遮罩圆的颜色  | 
+|setTextColor  |int  | 设置中间Text文本的颜色  | 
+|setArrawColor  |int  | 设置下方指针箭头的颜色  | 
+|setOnSelectionListener  |PieRotateView.onSelectionListener  | 指针指向某个区块以及点击事件指向的区块事件回调  | 
+|setOnPromiseParentTouchListener  |PieRotateView.onPromiseParentTouchListener  | 通知外界是否允许pierotateview之上的view拦截事件 | 
+|notifyDataChangeChanged  |void  | 通知pierotateview数据源发生了改变，重置相关初始属性，刷新View | 
+|notifySettingChanged  |void  | 通知pierotateview某些设置发生了改变，刷新View | 
+ 
+# 使用
+## 引入
+Step 1. Add it in your root build.gradle at the end of repositories：
 
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.2'
+	}
+ 
+ ## 布局XML中添加（系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的pad到padding决定）
+ 
+ ``` java
+ <com.wxy.pierotateview.view.PieRotateView
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:id="@+id/pie"
+                android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
+
+ ```
