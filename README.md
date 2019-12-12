@@ -29,7 +29,7 @@
 * [基本API](#基本API)
 * [使用](#使用)
     * [引入](#引入)
-    * [布局XML中添加](#布局XML中添加（系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的pad到padding决定）)
+    * [布局XML中添加](#布局XML中添加，与系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定)
     * [代码中设置Data和属性](#代码中设置Data和属性)
 
 # 基本API
@@ -74,7 +74,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.2'
 	}
  
- ## 布局XML中添加（系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的pad到padding决定）
+## 布局XML中添加，与系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
  
  ``` java
  <com.wxy.pierotateview.view.PieRotateView
@@ -84,3 +84,42 @@ Step 2. Add the dependency
                 android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
 
  ```
+## 代码中设置Data和属性
+### 设置Data
+
+``` java
+        List<PieRotateViewModel> list = new ArrayList<>();
+        list.add(new PieRotateViewModel("红扇", 20, getResources().getColor(R.color.colorAccent)));
+        list.add(new PieRotateViewModel("绿扇", 10, getResources().getColor(R.color.colorPrimaryDark)));
+        list.add(new PieRotateViewModel("蓝扇", 10, Color.BLUE));
+        list.add(new PieRotateViewModel("黄扇", 60, Color.parseColor("#FF7F00")));
+        list.add(new PieRotateViewModel("粉扇", 50, Color.parseColor("#EE7AE9")));
+        pie.setPieRotateViewModelList(list);
+```
+	
+### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged();
+
+``` java
+swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pie.setEnableTouch(false);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.clear();
+                        list.add(new PieRotateViewModel("红扇", 20, getResources().getColor(R.color.colorAccent)));
+                        list.add(new PieRotateViewModel("绿扇", 10, getResources().getColor(R.color.colorPrimaryDark)));
+                        pie.notifyDataChangeChanged();
+                        swipe.setRefreshing(false);
+                        pie.setEnableTouch(true);
+                    }
+                },2000);
+            }
+        });	
+```
+
+### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之，则需要在设置之后调用notifySettingChanged()通知View刷新
+
+
