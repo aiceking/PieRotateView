@@ -5,15 +5,12 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -22,19 +19,15 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 
 import com.wxy.pierotateview.model.PieRotateViewModel;
 
 import java.text.DecimalFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import androidx.annotation.Nullable;
 
-public class PieRotateView extends View {
+public class PieRotateView extends View  {
     private String TAG="PieRotateView";
     private Paint piePaint,circlePaint,textPaint,arrawPaint;
     protected static final int DEFUALT_VIEW_WIDTH=400;
@@ -53,6 +46,17 @@ public class PieRotateView extends View {
     private ValueAnimator flingAnim;//回弹动画
     private  float flingStartValue;
     private boolean isRecover;
+
+    public void setEnableTouch(boolean enableTouch) {
+        this.enableTouch = enableTouch;
+    }
+
+    private boolean enableTouch;
+    public void setOnPromiseParentTouchListener(PieRotateView.onPromiseParentTouchListener onPromiseParentTouchListener) {
+        this.onPromiseParentTouchListener = onPromiseParentTouchListener;
+    }
+
+    private onPromiseParentTouchListener onPromiseParentTouchListener;
 
     public boolean isFling() {
         return isFling;
@@ -90,6 +94,16 @@ public class PieRotateView extends View {
     private onSelectionListener onSelectionListener;
     private List<PieRotateViewModel> pieRotateViewModelList;
     public void setPieRotateViewModelList(List<PieRotateViewModel> pieRotateViewModelList) {
+        if (recoverAnim!=null){
+            recoverAnim.cancel();
+        }
+        if (flingAnim!=null){
+            flingAnim.cancel();
+        }
+        isRecover=false;
+        isClick=false;
+        sum=0;
+        moveRotateDregee=0;
         this.pieRotateViewModelList = pieRotateViewModelList;
         for (PieRotateViewModel pieRotateViewModel:pieRotateViewModelList){
             sum+=pieRotateViewModel.getNum();
@@ -150,6 +164,7 @@ public class PieRotateView extends View {
         textPaint.setColor(Color.WHITE);
         textPaint.setTextAlign(Paint.Align.CENTER);
         recoverTime=300;
+        enableTouch=true;
     }
 
     @Override
@@ -305,19 +320,28 @@ private float getDregee(float dregee){
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+        if (enableTouch){
         if (event.getAction()==MotionEvent.ACTION_DOWN){
             if (getDistance(event.getX(),event.getY(),centerX,centerY)>radius){
                 getParent().requestDisallowInterceptTouchEvent(false);
+                if (onPromiseParentTouchListener!=null){
+                    onPromiseParentTouchListener.onPromiseTouch(true);
+                }
                 return false;
             }else {
+                if (onPromiseParentTouchListener!=null){
+                    onPromiseParentTouchListener.onPromiseTouch(false);
+                }
                 getParent().requestDisallowInterceptTouchEvent(true);
             }
+        }
         }
         return super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (enableTouch){
         if (mVelocityTracker == null) {
             mVelocityTracker = VelocityTracker.obtain();
         }
@@ -365,6 +389,9 @@ private float getDregee(float dregee){
                 break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
+                if (onPromiseParentTouchListener!=null){
+                    onPromiseParentTouchListener.onPromiseTouch(true);
+                }
                 mActivePointerId = INVALID_POINTER;
                 float clickX = downX - event.getX();
                 float clickY = downY -  event.getY();
@@ -407,6 +434,9 @@ private float getDregee(float dregee){
             lastRotateDregee = degree(event.getX(),event.getY()) ;
         }
         return true;
+        }else {
+            return super.onTouchEvent(event);
+        }
     }
     private float getDistance(float x,float y,float x2,float y2){
         float xx = x - x2;
@@ -596,5 +626,8 @@ private float getDregee(float dregee){
     }
     public interface onSelectionListener{
         void onSelect(int position,String percent);
+    }
+    public interface onPromiseParentTouchListener{
+        void onPromiseTouch(boolean promise);
     }
 }
