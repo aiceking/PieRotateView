@@ -10,109 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41179fce-a00b-4159-bdcc-9e68a29ca816" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/static.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PieRotateView.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PieRotateView.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/PieRotateView/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/dictionaries/static.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/androidTest/java/com/zhufaner/pierotateview/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/bean/PieRotateBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/bean/PieRotateModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/test/Test1Activity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/test/Test2Activity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/java/com/zhufaner/pierotateview/view/PieRotateView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/layout/activity_test1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/layout/activity_test2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/app/src/test/java/com/zhufaner/pierotateview/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PieRotateView/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PieRotateView/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/androidTest/java/com/aice/pierotateview/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/java/com/aice/pierotateview/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/app/src/test/java/com/aice/pierotateview/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/consumer-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/androidTest/java/com/wxy/pierotateview/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/main/java/com/wxy/pierotateview/model/PieRotateViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/pierotateview/src/test/java/com/wxy/pierotateview/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/PieRotateView/settings.gradle" beforeDir="false" />
-    </list>
+    <list default="true" id="41179fce-a00b-4159-bdcc-9e68a29ca816" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,21 +35,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+            <state relative-caret-position="377">
+              <caret line="57" column="63" lean-forward="true" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="487">
+              <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
               <folding>
+                <element signature="e#1854#1855#0" expanded="true" />
+                <element signature="e#1884#1885#0" expanded="true" />
                 <element signature="e#1874#1875#0" expanded="true" />
                 <element signature="e#1905#1906#0" expanded="true" />
               </folding>
@@ -177,9 +77,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -221,6 +121,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="7HX5T19916001821" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-12T04:28:21.424Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -381,7 +283,7 @@
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="4" visible="true" weight="0.32993197" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="4" visible="true" weight="0.4702381" />
       <window_info anchor="bottom" id="Android Profiler" order="5" />
       <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Preview" weight="0.28787878" />
@@ -401,21 +303,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pierotateview/src/main/java/com/wxy/pierotateview/view/PieRotateView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state relative-caret-position="487">
+          <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
           <folding>
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#1884#1885#0" expanded="true" />
             <element signature="e#1874#1875#0" expanded="true" />
             <element signature="e#1905#1906#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/aice/pierotateview/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="57" column="63" lean-forward="true" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
         </state>
       </provider>
     </entry>
