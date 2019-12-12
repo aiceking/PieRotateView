@@ -136,7 +136,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int recoverTime = (int) ((float) progress / 100 * 5000);
+                int recoverTime = (int) ((float) progress / 100 * 1000);
                 pie.setRecoverTime(recoverTime);
                 tvRecovreTime.setText("recoverTime：" + recoverTime);
                 pie.notifyDataSetChanged();
