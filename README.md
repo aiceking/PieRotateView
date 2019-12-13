@@ -112,7 +112,7 @@ swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                         list.clear();
                         list.add(new PieRotateViewModel("红扇", 20, getResources().getColor(R.color.colorAccent)));
                         list.add(new PieRotateViewModel("绿扇", 10, getResources().getColor(R.color.colorPrimaryDark)));
-                        pie.notifyDataChangeChanged();
+                        pie.notifyDataChanged();
                         swipe.setRefreshing(false);
                         pie.setEnableTouch(true);
                     }

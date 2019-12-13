@@ -88,7 +88,7 @@ public class PieRotateView extends View  {
         this.onSelectionListener = onSelectionListener;
     }
     //刷新view
-    public void notifyDataChangeChanged(){
+    public void notifyDataChanged(){
         if (recoverAnim!=null){
             recoverAnim.cancel();
         }

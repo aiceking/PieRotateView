@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.duanhong169:checkerboarddrawable:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2dfea238875ada32a455fd32c13ac64b/jetified-checkerboarddrawable-1.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2dfea238875ada32a455fd32c13ac64b/jetified-checkerboarddrawable-1.0.2/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.duanhong169/checkerboarddrawable/1.0.2/b778cac2f9b81941920c0a31087f5118c6fe4aed/checkerboarddrawable-1.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.duanhong169/checkerboarddrawable/1.0.2/51498ce1b2c75821be96aa951b7fe8319b97fca8/checkerboarddrawable-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
