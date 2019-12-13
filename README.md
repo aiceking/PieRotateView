@@ -34,7 +34,7 @@
 * [使用](#使用)
     * [引入](#引入)
     * [布局XML中添加](#布局XML中添加与系统View使用方式一样宽高如果只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
-    * [代码中设置Data和属性](#代码中设置Data和属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
+    * [代码中设置Data和View属性](#代码中设置Data和View属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
 
 # 基本API
 ## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
@@ -88,7 +88,7 @@ Step 2. Add the dependency
                 android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
 
  ```
-## 代码中设置Data和属性，Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
+## 代码中设置Data和View属性，Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
 ### 设置Data
 
 ``` java
