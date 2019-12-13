@@ -56,7 +56,7 @@
 |setArrawColor  |int  | 设置下方指针箭头的颜色  | 
 |setOnSelectionListener  |PieRotateView.onSelectionListener  | 指针指向某个区块以及点击事件指向的区块事件回调  | 
 |setOnPromiseParentTouchListener  |PieRotateView.onPromiseParentTouchListener  | 通知外界是否允许pierotateview之上的view拦截事件 | 
-|notifyDataChangeChanged  |void  | 通知pierotateview数据源发生了改变，重置相关初始属性，刷新View | 
+|notifyDataChanged  |void  | 通知pierotateview数据源发生了改变，重置相关初始属性，刷新View | 
 |notifySettingChanged  |void  | 通知pierotateview某些设置发生了改变，刷新View | 
  
 # 使用
