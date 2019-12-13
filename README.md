@@ -2,7 +2,7 @@
 
 [![](https://jitpack.io/v/NoEndToLF/PieRotateView.svg)](https://jitpack.io/#NoEndToLF/PieRotateView)
 
-**View-Load-ReTry**：这是一个可旋转，自动回弹，可惯性旋转的饼状图，多属性控制，使用简单，具备一个自定义View应有的基本素质
+**PieRotateView**：这是一个可旋转，自动回弹，可惯性旋转的饼状图，多属性控制，使用简单，具备一个自定义View应有的基本素质
  
 * **原理** ：自定义坐标象限，Move事件中不断叠加划过的角度，重绘arcPath，判断滑动或者点击到某个区块使用Region。
 * **功能** ：
