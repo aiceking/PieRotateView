@@ -33,18 +33,18 @@
 * [基本API](#基本API)
 * [使用](#使用)
     * [引入](#引入)
-    * [布局XML中添加](#布局XML中添加与系统View使用方式一样宽高确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
+    * [布局XML中添加](#布局XML中添加与系统View使用方式一样宽高如果只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
     * [代码中设置Data和属性](#代码中设置Data和属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
 
 # 基本API
 ## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
 
-|属性  | 作用  |
-| :--------| :--: |
-| name| 表示该扇形区块的名字|
-| num| 表示该扇形区块的数字（决定它的百分比占比，总数为所有的PieRotateViewModel num叠加）| 
-| color| 表示该扇形区块的颜色| 
-| percent| 表示该扇形区块所占的百分比| 
+|属性  | 类型  |作用  |
+| :--------| :--------|:--: |
+| name| String|表示该扇形区块的名字|
+| num| float|表示该扇形区块的数字（决定它的百分比占比，总数为所有的PieRotateViewModel num叠加）| 
+| color| int|表示该扇形区块的颜色| 
+| percent| String|表示该扇形区块所占的百分比| 
 
 ## PieRotateView
 
