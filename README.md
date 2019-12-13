@@ -22,7 +22,7 @@
 * **2、下拉刷新及其他滑动冲突** ：
    * 1、Down的点在圆内，通过onPromiseParentTouchListener方法中使用SwipeRefreshLayout.setEnabled(promise)通知外界设置SwipeRefreshLayout不可以滑动。
    * 2、在SwipeRefreshLayout的OnRefreshListener中设置PierotateView的setEnableTouch(false)方法通知刷新期间，PierotateView不响应任何事件。
-   * 3、同理，监听AppBarLayout的滚动高度来控制只有展开才允许SwipeRefreshLayout下拉刷新和PierotateView旋转,否则都禁止
+   * 3、同理，监听AppBarLayout的滚动高度来控制只有完全展开才允许SwipeRefreshLayout下拉刷新和PierotateView旋转,否则都禁止
    
 | 常规使用      |下拉刷新及其他滑动冲突  |
 | :--------:| :--------:|  
@@ -102,7 +102,7 @@ Step 2. Add the dependency
         pie.setPieRotateViewModelList(list);
 ```
 	
-#### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged();
+#### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged()，刷新期间禁止PieRotateView消费事件。
 
 ``` java
 swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
