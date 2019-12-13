@@ -26,7 +26,7 @@
    
 | 常规使用      |下拉刷新及其他滑动冲突  |
 | :--------:| :--------:|  
-|![normal](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo2.gif)| 
+|![normal](https://github.com/NoEndToLF/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/NoEndToLF/PieRotateView/blob/master/DemoImg/demo2.gif)| 
  <br />
 
 # 使用  
