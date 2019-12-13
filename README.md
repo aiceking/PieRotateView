@@ -1,4 +1,7 @@
 # PieRotateView
+
+[![](https://jitpack.io/v/NoEndToLF/PieRotateView.svg)](https://jitpack.io/#NoEndToLF/PieRotateView)
+
 **View-Load-ReTry**：这是一个可旋转，自动回弹，可惯性旋转的饼状图，多属性控制，使用简单，具备一个自定义View应有的基本素质
  
 * **原理** ：自定义坐标象限，Move事件中不断叠加划过的角度，重绘arcPath，判断滑动或者点击到某个区块使用Region。
@@ -72,7 +75,7 @@ Step 1. Add it in your root build.gradle at the end of repositories：
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.2'
+	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.3'
 	}
  
 ## 布局XML中添加，与系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定

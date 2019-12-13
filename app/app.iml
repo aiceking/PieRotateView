@@ -147,9 +147,9 @@
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:1.1.3@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.NoEndToLF:PieRotateView:1.0.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.duanhong169:logger:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: ch.ielse:switchbutton:1.0.1@aar" level="project" />
-    <orderEntry type="module" module-name="pierotateviewlibrary" />
   </component>
 </module>

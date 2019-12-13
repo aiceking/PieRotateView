@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.NoEndToLF:PieRotateView:1.0.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be563d2b5cb45dd31c0e823d13f183ff/PieRotateView-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be563d2b5cb45dd31c0e823d13f183ff/PieRotateView-1.0.3/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.NoEndToLF/PieRotateView/1.0.3/c44054cc5da405af9f52ed663c71940abcca18b8/PieRotateView-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
