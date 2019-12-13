@@ -34,7 +34,7 @@
 * [使用](#使用)
     * [引入](#引入)
     * [布局XML中添加](#布局XML中添加与系统View使用方式一样如果宽高只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
-    * [代码中设置Data和View属性](#代码中设置Data和View属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
+    * [代码中设置Data和View属性](#Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
 
 # 基本API
 ## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
@@ -77,8 +77,8 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.3'
 	}
- 
-## 布局XML中添加，与系统View使用方式一样，如果宽高只确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
+## 布局XML中添加 
+### 布局XML中添加，与系统View使用方式一样，如果宽高只确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
  
  ``` java
  <com.wxy.pierotateview.view.PieRotateView
@@ -88,8 +88,9 @@ Step 2. Add the dependency
                 android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
 
  ```
-## 代码中设置Data和View属性，Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
-### 设置Data
+## 代码中设置Data和View属性 
+### Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
+#### 设置Data
 
 ``` java
         List<PieRotateViewModel> list = new ArrayList<>();
@@ -101,7 +102,7 @@ Step 2. Add the dependency
         pie.setPieRotateViewModelList(list);
 ```
 	
-### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged();
+#### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged();
 
 ``` java
 swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -123,7 +124,7 @@ swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             }
         });	
 ```
-### 添加区块选中回调;
+#### 添加区块选中回调;
 ``` java
 pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
             @Override
@@ -133,7 +134,7 @@ pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
             }
         });
 ```
-### 添加事件处理回调，即通知外界是否要拦截事件;
+#### 添加事件处理回调，即通知外界是否要拦截事件;
 ``` java
 pie.setOnPromiseParentTouchListener(new PieRotateView.onPromiseParentTouchListener() {
             @Override
@@ -142,7 +143,7 @@ pie.setOnPromiseParentTouchListener(new PieRotateView.onPromiseParentTouchListen
             }
         });
 ```
-### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之设置下方的属性后，需要再调用notifySettingChanged()通知View刷新,
+#### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之设置下方的属性后，需要再调用notifySettingChanged()通知View刷新,
 
 |方法  |参数  | 作用  |
 | :--------| :--------| :--: |
