@@ -33,7 +33,7 @@
 * [基本API](#基本API)
 * [使用](#使用)
     * [引入](#引入)
-    * [布局XML中添加](#布局XML中添加与系统View使用方式一样宽高如果只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
+    * [布局XML中添加](#布局XML中添加与系统View使用方式一样如果宽高只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
     * [代码中设置Data和View属性](#代码中设置Data和View属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
 
 # 基本API
@@ -78,7 +78,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.3'
 	}
  
-## 布局XML中添加，与系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
+## 布局XML中添加，与系统View使用方式一样，如果宽高只确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
  
  ``` java
  <com.wxy.pierotateview.view.PieRotateView
