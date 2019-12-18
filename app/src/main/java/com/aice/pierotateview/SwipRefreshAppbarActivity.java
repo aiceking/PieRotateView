@@ -26,6 +26,8 @@ import butterknife.OnClick;
 import ch.ielse.view.SwitchView;
 import top.defaults.colorpicker.ColorPickerPopup;
 
+import static com.aice.pierotateview.listener.AppBarLayoutStateChangeListener.State.EXPANDED;
+
 
 public class SwipRefreshAppbarActivity extends AppCompatActivity {
 
@@ -53,6 +55,8 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
     SwipeRefreshLayout swipe;
     @BindView(R.id.appbar_layout)
     AppBarLayout appbarLayout;
+    private AppBarLayoutStateChangeListener.State appbarState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +88,13 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
                         list.add(new PieRotateViewModel("绿扇", 10, getResources().getColor(R.color.colorPrimaryDark)));
                         pie.notifyDataChanged();
                         swipe.setRefreshing(false);
-                        pie.setEnableTouch(true);
+                        if (appbarState==EXPANDED){
+                            swipe.setEnabled(true);
+                            pie.setEnableTouch(true);
+                        }else {
+                            pie.setEnableTouch(false);
+                            swipe.setEnabled(false);
+                        }
                     }
                 },2000);
             }
@@ -92,6 +102,7 @@ public class SwipRefreshAppbarActivity extends AppCompatActivity {
         appbarLayout.addOnOffsetChangedListener(new AppBarLayoutStateChangeListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                appbarState=state;
                 switch (state) {
                     case EXPANDED:
                         swipe.setEnabled(true);
