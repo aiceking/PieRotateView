@@ -2,7 +2,7 @@
 
 [![](https://jitpack.io/v/NoEndToLF/PieRotateView.svg)](https://jitpack.io/#NoEndToLF/PieRotateView)
 
-**View-Load-ReTry**：这是一个可旋转，自动回弹，可惯性旋转的饼状图，多属性控制，使用简单，具备一个自定义View应有的基本素质
+**PieRotateView**：这是一个可旋转，自动回弹，可惯性旋转的饼状图，多属性控制，使用简单，具备一个自定义View应有的基本素质
  
 * **原理** ：自定义坐标象限，Move事件中不断叠加划过的角度，重绘arcPath，判断滑动或者点击到某个区块使用Region。
 * **功能** ：
@@ -16,35 +16,35 @@
    * 2、暴露事件冲突接口，允许外界操作父控件的事件及该view自己的事件（因为这只是个View，没办法直接处理所有的滑动冲突场景）
    * 3、内存抖动要小，防止内存溢出。
 -------------------
-# 示例
+# 示例（真机流畅丝滑，压缩的GIF丢帧严重）
 ## Demo演示了普通用法和涉及到SwipeRefreshLayout+AppBarLayout等类似的滑动冲突的用法（细节请看代码）。
 * **1、普通使用** ：没啥可说的，只有Down的点在圆的范围内才可以响应事件，否则通知父控件拦截
 * **2、下拉刷新及其他滑动冲突** ：
    * 1、Down的点在圆内，通过onPromiseParentTouchListener方法中使用SwipeRefreshLayout.setEnabled(promise)通知外界设置SwipeRefreshLayout不可以滑动。
    * 2、在SwipeRefreshLayout的OnRefreshListener中设置PierotateView的setEnableTouch(false)方法通知刷新期间，PierotateView不响应任何事件。
-   * 3、同理，监听AppBarLayout的滚动高度来控制只有展开才允许SwipeRefreshLayout下拉刷新和PierotateView旋转,否则都禁止
+   * 3、同理，监听AppBarLayout的滚动高度来控制只有完全展开才允许SwipeRefreshLayout下拉刷新和PierotateView旋转,否则都禁止
    
 | 常规使用      |下拉刷新及其他滑动冲突  |
 | :--------:| :--------:|  
-|![normal](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/AndroidCloud/PieRotateView/blob/master/DemoImg/demo2.gif)| 
+|![normal](https://github.com/NoEndToLF/PieRotateView/blob/master/DemoImg/demo1.gif)| ![fix](https://github.com/NoEndToLF/PieRotateView/blob/master/DemoImg/demo2.gif)| 
  <br />
 
-# 使用  
+# 开始使用  
 * [基本API](#基本API)
 * [使用](#使用)
     * [引入](#引入)
-    * [布局XML中添加](#布局XML中添加与系统View使用方式一样宽高确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
-    * [代码中设置Data和属性](#代码中设置Data和属性Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
+    * [布局XML中添加](#布局XML中添加与系统View使用方式一样如果宽高只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
+    * [代码中设置Data和View属性](#Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
 
 # 基本API
 ## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
 
-|属性  | 作用  |
-| :--------| :--: |
-| name| 表示该扇形区块的名字|
-| num| 表示该扇形区块的数字（决定它的百分比占比，总数为所有的PieRotateViewModel num叠加）| 
-| color| 表示该扇形区块的颜色| 
-| percent| 表示该扇形区块所占的百分比| 
+|属性  | 类型  |作用  |
+| :--------| :--------|:--: |
+| name| String|表示该扇形区块的名字|
+| num| float|表示该扇形区块的数字（决定它的百分比占比，总数为所有的PieRotateViewModel num叠加）| 
+| color| int|表示该扇形区块的颜色| 
+| percent| String|表示该扇形区块所占的百分比| 
 
 ## PieRotateView
 
@@ -77,8 +77,8 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.NoEndToLF:PieRotateView:1.0.3'
 	}
- 
-## 布局XML中添加，与系统View使用方式一样，宽高确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
+## 布局XML中添加 
+### 布局XML中添加，与系统View使用方式一样，如果宽高只确定其一，另一个取其相同值，且圆的圆心由padding后的View中心，圆的半径为宽高中的较小值和对应的padding决定
  
  ``` java
  <com.wxy.pierotateview.view.PieRotateView
@@ -88,8 +88,9 @@ Step 2. Add the dependency
                 android:layout_height="wrap_content"></com.wxy.pierotateview.view.PieRotateView>
 
  ```
-## 代码中设置Data和属性，Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
-### 设置Data
+## 代码中设置Data和View属性 
+### Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码
+#### 设置Data
 
 ``` java
         List<PieRotateViewModel> list = new ArrayList<>();
@@ -101,7 +102,7 @@ Step 2. Add the dependency
         pie.setPieRotateViewModelList(list);
 ```
 	
-### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged();
+#### 刷新Data，可以重新使用setPieRotateViewModelList，或者重置list后调用pie.notifyDataChangeChanged()，刷新期间禁止PieRotateView消费事件。
 
 ``` java
 swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -123,7 +124,7 @@ swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             }
         });	
 ```
-### 添加区块选中回调;
+#### 添加区块选中回调;
 ``` java
 pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
             @Override
@@ -133,7 +134,7 @@ pie.setOnSelectionListener(new PieRotateView.onSelectionListener() {
             }
         });
 ```
-### 添加事件处理回调，即通知外界是否要拦截事件;
+#### 添加事件处理回调，即通知外界是否要拦截事件;
 ``` java
 pie.setOnPromiseParentTouchListener(new PieRotateView.onPromiseParentTouchListener() {
             @Override
@@ -142,7 +143,7 @@ pie.setOnPromiseParentTouchListener(new PieRotateView.onPromiseParentTouchListen
             }
         });
 ```
-### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之设置下方的属性后，需要再调用notifySettingChanged()通知View刷新,
+#### 修改pieratateview的其他属性，如果设置属性在setPieRotateViewModelList之前则不需要调用notifySettingChanged()，因为setPieRotateViewModelList会让View重绘，属性自然会生效，反之设置下方的属性后，需要再调用notifySettingChanged()通知View刷新,
 
 |方法  |参数  | 作用  |
 | :--------| :--------| :--: |
