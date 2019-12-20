@@ -35,7 +35,7 @@
     * [引入](#引入)
     * [布局XML中添加](#布局XML中添加与系统View使用方式一样如果宽高只确定其一另一个取其相同值且圆的圆心由padding后的View中心圆的半径为宽高中的较小值和对应的padding决定)
     * [代码中设置Data和View属性](#Demo中的SwipRefreshAppbarActivity和NormalActivity中有详细使用代码)
-
+* [反馈与建议](#反馈与建议)
 # 基本API
 ## Data实例类 PieRotateViewModel，以下为使用期间会接触到的属性，前三个属性用于构造PieRotateViewModel，别的属性都是为绘制准备的，不用关心，也不用去设置。
 
@@ -153,5 +153,30 @@ pie.setOnPromiseParentTouchListener(new PieRotateView.onPromiseParentTouchListen
 |setTextColor  |int  | 设置中间Text文本的颜色  | 
 |setArrawColor  |int  | 设置下方指针箭头的颜色  | 
 
+# 反馈与建议
+- 邮箱：<wxy314309@foxmail.com>
 
+# License
+```
+Copyright (c) [2018] [static]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+---------
 
